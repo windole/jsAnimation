@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Move</title>
+   <style type="text/css">
+* {
+     margin: 0;
+     padding: 0;
+}
+#con {
+      width: 200px;
+      height: 200px;
+      background: red;
+      position: relative;
+      top: 0;
+      left: -200px;
+}
+#con span {
+width: 20px;
+      height: 50px;
+      position: absolute;
+      top: 75px;
+      left: 200px;
+      background: blueviolet;
+}
+   </style>
+   <script>
+
+    window.onload = function () {
+           var oDiv = document.getElementById('con');
+            oDiv.onmouseover = function () {
+              startMove(0);
+            }
+           oDiv.onmouseout = function () {
+               startMove(-200);
+            }
+       }
+       var timer = null;
+function startMove(iTarget) {
+    var oDiv = document.getElementById('con');
+    clearInterval(timer);
+    timer = setInterval(function () {
+               var speed = 0;
+                if (oDiv.offsetLeft < iTarget) {
+                      speed = 10;
+                  } else {
+                   speed = -10;
+                  }
+               if (oDiv.offsetLeft == iTarget) {
+                   clearInterval(timer);
+                    } else {
+                   oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                  }
+           },30);
+}
+   </script>
+</head>
+<body>
+<div id="con">
+   <span>分享</span>
+</div>
+</body>
+</html>
