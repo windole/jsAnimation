@@ -57,7 +57,7 @@
       obj.timer=setInterval(function(){
         var icur=0;
         if (attr=='opacity') {
-          icur=Math.round(parseFloat(getStyle(obj,attr))*100);
+          icur=parseFloat(getStyle(obj,attr))*100;
         } else {
           var icur=parseInt(getStyle(obj,attr));
         }
@@ -70,10 +70,8 @@
           if (attr='opacity') {
             obj.style.filter='alpha(opacity:'+(icur+speed)+')';//针对IE浏览器
             obj.style.opacity=(icur+speed)/100;
-          } else {
-            obj.style[attr]=icur+speed+"px";
-          }
-          
+          } else {}
+          obj.style[attr]=icur+speed+"px";
         }
 
       },30);
