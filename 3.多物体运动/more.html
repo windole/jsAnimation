@@ -14,7 +14,7 @@ ul li {
       height: 100px;
       background: yellow;
       margin-bottom: 20px;
-      /*border: 4px solid #777;*/
+      border: 4px solid #777;
 }
    </style>
    <script>
@@ -34,17 +34,26 @@ ul li {
      function startMove(obj,iTaget){
       clearInterval(obj.timer);
       obj.timer=setInterval(function(){
-        var speed=(iTaget-obj.offsetWidth)/8;
+        var icur=parseInt(getStyle(obj,'width'));
+        var speed=(iTaget-icur)/8;
         speed=speed>0?Math.ceil(speed):Math.floor(speed);
-        if (obj.offsetWidth==iTaget) {
+        if (icur==iTaget) {
           clearInterval(obj.timer);
         }
         else{
-          obj.style.width=obj.offsetWidth+speed+"px";
+          obj.style.width=icur+speed+"px";
         }
 
       },30);
      }
+   }
+
+    function getStyle(obj,attr){
+    if (obj.currentStyle) {
+      return obj.currentStyle[attr]; //针对IE浏览器
+    } else {
+      return getComputedStyle(obj,false)[attr];
+    }
    }
    
    </script>
