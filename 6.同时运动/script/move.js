@@ -2,10 +2,9 @@
 function startMove(obj,json,fn){  //添加一个回调函数fn
   clearInterval(obj.timer);//1.2+++
   obj.timer=setInterval(function(){//1.2+++
-  var flag;
+  var flag= true;
   //1.取当前的值
   for(var attr in json){
-  flag=true;
   var icur=null;
   if(attr=='opacity'){
     icur=Math.round(parseFloat(getStyle(obj,attr))*100);
@@ -29,6 +28,7 @@ function startMove(obj,json,fn){  //添加一个回调函数fn
 
     if(flag){
         clearInterval(obj.timer);
+        flag=true;
       if(fn){ //判断是否存在回调函数,并调用
         fn();
           }
