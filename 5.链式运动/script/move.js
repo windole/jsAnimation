@@ -1,6 +1,6 @@
 function startMove(obj,attr,iTarget,fn){  //添加一个回调函数fn
   clearInterval(obj.timer);//1.2+++
-  opacitybj.timer=setInterval(function(){//1.2+++
+  obj.timer=setInterval(function(){//1.2+++
   var icur=null;
 //1.判断类型
   if(attr=='opacity'){
